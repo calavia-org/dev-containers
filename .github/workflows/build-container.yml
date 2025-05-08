@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       container-file:
-        description: 'Contianer file to be built'
+        description: 'Container file to be built'
         required: true
         default: Dockerfile
       # The `repository` input specifies the container registry repository where the built image will be stored.
