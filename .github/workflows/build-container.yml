@@ -4,10 +4,15 @@ on:
   # This workflow uses `workflow_dispatch` as the trigger, allowing manual triggering.
   # Note: This differs from `workflow_call`, which is used for reusable workflows triggered by other workflows.
   workflow_dispatch:
-
+    inputs:
+      repository:
+        description: 'Registry repository to store the image'
+        required: true
+  pull_request:
+    branches:
+      - main
 jobs:
-
   build:
-    uses: calavia-org/workflows-lib/.github/workflows/build-container.yml@main
+    uses: calavia-org/workflows-lib/.github/workflows/build-container.yml
     with:
-      repository: devcontainer
+      repository: ${{ inputs.repository }}    
