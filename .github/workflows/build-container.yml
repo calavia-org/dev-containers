@@ -6,6 +6,6 @@ on:
 jobs:
 
   build:
-    uses: calavia-org/.github/workflows/build-container.yml@main
+    uses: calavia-org/workflows-lib/.github/workflows/build-container.yml@main
     with:
       repository: devcontainer
