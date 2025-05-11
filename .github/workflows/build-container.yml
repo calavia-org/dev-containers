@@ -1,20 +1,6 @@
-name: Reusable build container
+name: Build devcontainers
 
 on:
-  # This workflow uses `workflow_dispatch` as the trigger, allowing manual triggering.
-  # Note: This differs from `workflow_call`, which is used for reusable workflows triggered by other workflows.
-  workflow_dispatch:
-    inputs:
-      container-file:
-        description: 'Container file to be built'
-        required: true
-        default: Dockerfile
-      # The `repository` input specifies the container registry repository where the built image will be stored.
-      # Example: `ghcr.io/owner/repository` for GitHub Container Registry.
-      repository:
-        description: 'Registry repository to store the image'
-        required: true
-        default: devcontainer-base
   pull_request:
     branches:
       - main
@@ -22,4 +8,6 @@ jobs:
   build:
     uses: calavia-org/workflows-lib/.github/workflows/build-container.yml@main
     with:
-      repository: ${{ inputs.repository }}
+      container-file: Dockerfile
+      context: .
+      repository: devcontainer-base
